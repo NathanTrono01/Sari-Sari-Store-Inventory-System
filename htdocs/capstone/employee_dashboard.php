@@ -1,5 +1,6 @@
 <?php
 session_start(); // Start the session
+include('db.php');
 
 // Check if user is logged in and is an Employee
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Employee') {

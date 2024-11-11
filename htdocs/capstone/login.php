@@ -1,6 +1,6 @@
 <?php
 session_start(); // Start the session
-include 'db.php'; // Include database configuration
+include ('db.php'); // Include database configuration
 
 $error = ''; // Initialize error message
 
