@@ -1,15 +1,48 @@
 <?php
 session_start(); // Start the session
-include('db.php');
 
-// Check if user is logged in and is an Employee
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'Employee') {
-    header("Location: login.php"); // Redirect to login if unauthorized
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
     exit();
 }
 
-// Employee dashboard content
-echo "<h1>Employee Dashboard</h1>";
-echo "<p>Welcome, " . $_SESSION['username'] . " (Employee)</p>";
-echo "<a href='logout.php'>Logout</a>";
+// Fetch user role from session
+$role = $_SESSION['role'];
+include 'navbar.php';
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Simple styles for navigation */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            padding: 14px 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome, Employee</h1>
+    <p>Here is the employee dashboard where you can view the inventory and record sales.</p>
+
+</body>
+</html>

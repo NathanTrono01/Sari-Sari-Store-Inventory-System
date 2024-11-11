@@ -11,6 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 // Get sales data
 $sql = "SELECT * FROM sales";
 $result = mysqli_query($conn, $sql);
+include 'navbar.php';
 ?>
 
 <h1>Sales Transactions</h1>
