@@ -4,7 +4,7 @@ include('db.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: login.php");
     exit();
 }
 
@@ -128,30 +128,6 @@ if (isset($_POST['add_item'])) {
             min-height: 100vh;
         }
 
-        .sidebar {
-            width: 200px;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: white;
-        }
-
-        .sidebar h2 {
-            margin-bottom: 20px;
-        }
-
-        .sidebar a {
-            color: white;
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .sidebar a:hover {
-            background-color: #34495e;
-            padding: 5px;
-        }
-
         .content {
             flex: 1;
             padding: 20px;
@@ -207,7 +183,7 @@ if (isset($_POST['add_item'])) {
     <div class="container">
         <div class="sidebar">
             <h2>SariStock</h2>
-            <a href="inventory.php">View Inventory</a>
+            <a href="inventory_admin.php">View Inventory</a>
             <a href="add_item.php">Add Item</a>
             <a href="admin_dashboard.php">Dashboard</a>
             <a href="logout.php">Logout</a>
@@ -256,7 +232,7 @@ if (isset($_POST['add_item'])) {
                 </form>
             </div>
 
-            <a href="inventory.php" class="btn btn-back">Back to Inventory</a>
+            <a href="inventory_admin.php" class="btn btn-back">Back to Inventory</a>
         </div>
     </div>
 

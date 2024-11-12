@@ -9,40 +9,33 @@ if (!isset($_SESSION['user_id'])) {
 
 // Fetch user role from session
 $role = $_SESSION['role'];
+
 include 'navbar.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Admin Dashboard</title>
     <style>
-        /* Simple styles for navigation */
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            padding: 14px 20px;
-            text-align: center;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
+        @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Raleway, sans-serif;
         }
     </style>
 </head>
-<body>
 
+<body>
     <h1>Welcome, Employee</h1>
-    <p>Here is the employee dashboard where you can view the inventory and record sales.</p>
+    <p>Here is the admin dashboard where you can manage inventory, sales, etc.</p>
 
 </body>
+
 </html>

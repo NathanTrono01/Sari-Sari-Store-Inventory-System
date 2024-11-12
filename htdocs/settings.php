@@ -6,6 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['theme'] = $_POST['theme'];
 }
 
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role'];
+} else {
+    $role = ''; // Set role to empty if not logged in
+}
+
 $theme = $_SESSION['theme'] ?? 'light';
 ?>
 

@@ -1,11 +1,17 @@
-<?php 
+<?php
 session_start();
 include('db.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: login.php");
     exit();
+}
+
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role'];
+} else {
+    $role = ''; // Set role to empty if not logged in
 }
 
 // Delete item
@@ -42,16 +48,19 @@ $result = mysqli_query($conn, $sql);
         .back a[href*="admin_dashboard.php"]:hover {
             background-color: #FB667A;
             cursor: pointer;
+            box-shadow: 0 0 15px #6e67aa;
         }
 
         a[href*="restock_item.php"]:hover {
             background-color: orange;
             cursor: pointer;
+            box-shadow: 0 0 15px #6e67aa;
         }
 
         a[href*="add_item.php"]:hover {
             background-color: yellowgreen;
             cursor: pointer;
+            box-shadow: 0 0 15px #6e67aa;
         }
 
         .alert {
@@ -84,7 +93,6 @@ $result = mysqli_query($conn, $sql);
         .alert-danger {
             background-color: rgba(220, 17, 1, 0.16);
         }
-        
     </style>
 </head>
 
@@ -93,10 +101,9 @@ $result = mysqli_query($conn, $sql);
         <!-- Navigation Section -->
         <div class="sidebar">
             <h2>SariStock</h2>
-            <a href="inventory.php">View Inventory</a>
-            <a href="add_item.php">Add Item</a>
-            <a href="restock_item.php">Restock Item</a>
-            <a href="admin_dashboard.php">Dashboard</a>
+            <a href="record_sale.php">Record Sale</a>
+            <a href="inventory_employee.php">View Inventory</a>
+            <a href="employee_dashboard.php">Dashboard</a>
             <a href="logout.php">Logout</a>
         </div>
 
@@ -126,7 +133,6 @@ $result = mysqli_query($conn, $sql);
                         <tr>
                             <th colspan="5">
                                 <div class="table-header" align="left">
-                                    <a href="add_item.php" class="btn add-item">+ Add New Item</a>
                                     <a href="restock_item.php" class="btn restock-item">↺ Restock Item</a>
                                 </div>
                             </th>
@@ -140,7 +146,7 @@ $result = mysqli_query($conn, $sql);
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -149,7 +155,7 @@ $result = mysqli_query($conn, $sql);
                                 <td><?php echo $row['item_id']; ?></td>
                                 <td><?php echo $row['item_name']; ?></td>
                                 <td><?php echo $row['quantity']; ?></td>
-                                <td>$<?php echo number_format($row['price'], 2); ?></td>
+                                <td>₱ <?php echo number_format($row['price'], 2); ?></td>
                                 <td>
                                     <?php
                                     if ($row['quantity'] > 10) {
@@ -162,8 +168,6 @@ $result = mysqli_query($conn, $sql);
                                     ?>
                                 </td>
                                 <td class="actions">
-                                    <a href="edit_item.php?item_id=<?php echo $row['item_id']; ?>">✏️</a>
-                                    <a href="inventory.php?action=delete&item_id=<?php echo $row['item_id']; ?>">🗑️</a>
                                     <a href="add_item.php?item_id=<?php echo $row['item_id']; ?>">↺</a>
                                 </td>
                             </tr>
@@ -174,9 +178,9 @@ $result = mysqli_query($conn, $sql);
 
             <!-- Back to Dashboard -->
             <div class="back">
-                <a href="admin_dashboard.php" class="btn btn-back">Back to Dashboard</a>
+                <a href="employee_dashboard.php" class="btn btn-back">Back to Dashboard</a>
             </div>
-            
+
         </div>
     </div>
 </body>

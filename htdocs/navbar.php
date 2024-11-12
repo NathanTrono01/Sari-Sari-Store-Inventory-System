@@ -17,20 +17,40 @@ if (isset($_SESSION['role'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation with Dropdown</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.42em;
+            color: #202020;
+            background-color: #ffffff;
+            margin: 0;
+            /* Reset body margin */
+        }
+
+        body::before {
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, #1F2739 120%);
+            opacity: 0.7;
+            margin: 0 auto;
+        }
+
         nav {
             text-align: center;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #FFDBB5;
+            background-color: #a4a4cc;
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         nav a {
-            background-color: #6C4E31;
+            background-color: #756eb2;
             display: inline-block;
             padding: 10px 15px;
             margin: 0 5px;
@@ -62,8 +82,8 @@ if (isset($_SESSION['role'])) {
         }
 
         nav a:hover {
-            background-color: #800000;
-            box-shadow: 0 0 15px rgba(251, 102, 122, 0.5);
+            background-color: #6c63ac;
+            box-shadow: 0 0 15px #6e67aa;
             transform: translateY(-3px);
         }
 
@@ -118,14 +138,14 @@ if (isset($_SESSION['role'])) {
 
     <nav>
         <?php if ($role == 'Admin'): ?>
-            <a href="admin_dashboard.php" >Admin Dashboard</a>
-            <a href="inventory.php" >Inventory</a>
-            <a href="sales.php" >Sales</a>
-            <a href="analytics.php" >Analytics</a>
+            <a href="admin_dashboard.php">Admin Dashboard</a>
+            <a href="inventory_admin.php">Inventory</a>
+            <a href="sales.php">Sales</a>
+            <a href="analytics.php">Analytics</a>
         <?php elseif ($role == 'Employee'): ?>
-            <a href="employee_dashboard.php" >Dashboard</a>
-            <a href="inventory.php" >Inventory</a>
-            <a href="record_sale.php" >Record Sale</a>
+            <a href="employee_dashboard.php">Dashboard</a>
+            <a href="inventory_employee.php">Inventory</a>
+            <a href="record_sale.php">Record Sale</a>
         <?php endif; ?>
 
         <!-- Common Logout link for both Admin and Employee -->

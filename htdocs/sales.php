@@ -4,8 +4,14 @@ include('db.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: login.php");
     exit();
+}
+
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role'];
+} else {
+    $role = ''; // Set role to empty if not logged in
 }
 
 // Get sales data
