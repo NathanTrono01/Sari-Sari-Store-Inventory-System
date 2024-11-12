@@ -143,7 +143,7 @@ $result = mysqli_query($conn, $sql);
                         <tr>
                             <th>Item ID</th>
                             <th>Name</th>
-                            <th>Quantity</th>
+                            <th>Stock</th>
                             <th>Price</th>
                             <th>Status</th>
                             <th>Action</th>

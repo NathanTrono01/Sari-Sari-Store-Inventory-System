@@ -166,7 +166,11 @@ if (isset($_POST['record_sale'])) {
         <div class="sidebar">
             <h2>SariStock</h2>
             <a href="record_sale.php">Record Sale</a>
+            <?php if ($role == 'Admin'): ?>
+            <a href="inventory_admin.php">View Inventory</a>
+            <?php elseif ($role == 'Employee'): ?>
             <a href="inventory_employee.php">View Inventory</a>
+            <?php endif; ?>
             <a href="admin_dashboard.php">Dashboard</a>
             <a href="logout.php">Logout</a>
         </div>
